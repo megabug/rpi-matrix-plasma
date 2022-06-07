@@ -1,0 +1,3 @@
+clang
+
+%cpp ../rpi-rgb-led-matrix/include -Wall -Wextra -Wshadow -Wundef -Wconversion -Wcast-align -Wunused -Wsign-conversion -fno-common -Wlogical-op
