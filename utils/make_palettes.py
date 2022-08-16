@@ -95,6 +95,8 @@ COLORMAP_NAMES = {
 
 PALETTE_SIZE = 2048
 
+COLOR_ADJUST = (1.0, 0.9, 0.9)
+
 PALETTE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "palettes")
 
 
@@ -107,4 +109,7 @@ for colormap_name in COLORMAP_NAMES:
     with open(os.path.join(PALETTE_DIR, f"{colormap_name}.txt"), "w") as f:
         for i in range(PALETTE_SIZE):
             c = colormap(i)
-            print(" ".join(str(int(v * 255)) for v in c[:3]), file=f)
+            print(
+                " ".join(str(int(v * a * 255)) for v, a in zip(c[:3], COLOR_ADJUST)),
+                file=f,
+            )
